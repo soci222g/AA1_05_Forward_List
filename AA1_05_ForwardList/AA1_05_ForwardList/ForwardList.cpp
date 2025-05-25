@@ -1,16 +1,5 @@
 #include"ForwardList.h"
 
-//referencia nodo
-/*
-struct Node {
-		int m_value;
-		Node* m_next;
-		Node() : m_value(0), m_next(nullptr) {};
-		Node(int value, Node* next) : m_value(value), m_next(next) {};
-	};
-*/
-
-
 //nullo de inicio
 ForwardList::ForwardList() {
 	m_size = 0;
@@ -23,7 +12,6 @@ ForwardList::~ForwardList() {
 
 }
 
-//echo? comporbar
 void ForwardList::PushBack(int value) {
 	
 
@@ -46,9 +34,6 @@ void ForwardList::PushBack(int value) {
 
 
 	}
-
-	
-
 
 	m_size++; //aumenta el tamanyo
 }
@@ -97,7 +82,7 @@ void ForwardList::PopBack() {
 
 
 
-	m_size--; //aumenta el tamanyo
+	m_size--; //reduce el tamanyo
 }
 
 void ForwardList::PopFront() {

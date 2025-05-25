@@ -1,5 +1,6 @@
 #include"ForwardList.h"
 
+
 int main() {
 
 	ForwardList myList;
@@ -9,8 +10,15 @@ int main() {
 	myList.PushFront(5);
 	myList.PushBack(7);
 	myList.PushBack(2);
+	myList.PushBack(15);
+
+	myList.PopFront();
+	
+	
 
 	myList.Insert(6, myList.Size());
+
+
 
 	myList.PushBackAverageNode();
 }
