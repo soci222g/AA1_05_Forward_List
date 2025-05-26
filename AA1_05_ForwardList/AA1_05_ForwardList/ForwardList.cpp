@@ -240,4 +240,39 @@ bool ForwardList::IsEmpty()const {
 
 }
 
+bool operator==(const ForwardList& l1, const ForwardList& l2) {
+	if (l1.m_size != l2.m_size) {
+		return false;
+	}
 
+	ForwardList::Node* auxL1 = l1.m_first;
+	ForwardList::Node* auxL2 = l2.m_first;
+
+	while (auxL1 != nullptr && auxL2 != nullptr) {
+		if (auxL1->m_value != auxL2->m_value) {
+			return false;
+		}
+		auxL1 = auxL1->m_next;
+		auxL2 = auxL2->m_next;
+	}
+
+	return true;
+}
+
+ForwardList ForwardList::operator+(const ForwardList& l) {
+
+}
+
+std::ostream& operator<<(std::ostream& o, const ForwardList& l) {
+	o << "[";
+	ForwardList::Node* auxL1 = l.m_first;
+	while (auxL1 != nullptr) {
+		o << auxL1->m_value;
+		if (auxL1->m_next != nullptr) {
+			o << ", ";
+		}
+		auxL1 = auxL1->m_next;
+	}
+	o << "]";
+	return o;
+}

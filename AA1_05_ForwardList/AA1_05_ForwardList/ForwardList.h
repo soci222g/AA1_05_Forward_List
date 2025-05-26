@@ -45,7 +45,7 @@ public: // Constructor
 	// Compares de content of lists l1 and l2. Returns true if both are equal, false otherwise.
 	friend bool operator==(const ForwardList& l1, const ForwardList& l2);
 	// Concatenates nodes with the provided list l and returns the resulting list.
-	friend ForwardList operator+(const ForwardList& l);
+	ForwardList operator+(const ForwardList& l);
 	// Outputs the elements of the list into an output stream object
 	friend std::ostream& operator<<(std::ostream& o, const ForwardList& l);
 };
