@@ -245,15 +245,15 @@ bool operator==(const ForwardList& l1, const ForwardList& l2) {
 		return false;
 	}
 
-	ForwardList::Node* auxL1 = l1.m_first;
-	ForwardList::Node* auxL2 = l2.m_first;
+	ForwardList::Node* itL1 = l1.m_first;
+	ForwardList::Node* itL2 = l2.m_first;
 
-	while (auxL1 != nullptr && auxL2 != nullptr) {
-		if (auxL1->m_value != auxL2->m_value) {
+	while (itL1 != nullptr && itL2 != nullptr) {
+		if (itL1->m_value != itL2->m_value) {
 			return false;
 		}
-		auxL1 = auxL1->m_next;
-		auxL2 = auxL2->m_next;
+		itL1 = itL1->m_next;
+		itL2 = itL2->m_next;
 	}
 
 	return true;
@@ -265,13 +265,13 @@ ForwardList ForwardList::operator+(const ForwardList& l) {
 
 std::ostream& operator<<(std::ostream& o, const ForwardList& l) {
 	o << "[";
-	ForwardList::Node* auxL1 = l.m_first;
-	while (auxL1 != nullptr) {
-		o << auxL1->m_value;
-		if (auxL1->m_next != nullptr) {
+	ForwardList::Node* it = l.m_first;
+	while (it != nullptr) {
+		o << it->m_value;
+		if (it->m_next != nullptr) {
 			o << ", ";
 		}
-		auxL1 = auxL1->m_next;
+		it = it->m_next;
 	}
 	o << "]";
 	return o;
