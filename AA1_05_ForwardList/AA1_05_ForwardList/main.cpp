@@ -41,7 +41,7 @@ int main() { //IsEmpty() & Size() are used inside some of the other functions. e
 	}
 
 	//FALTA OPERADOR +
-	//myList2 = myList2 + myList;
+	myList2 = myList2 + myList;
 
 	std::cout << myList2 << std::endl;
 

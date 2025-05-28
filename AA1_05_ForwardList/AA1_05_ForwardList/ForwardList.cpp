@@ -163,7 +163,7 @@ void ForwardList::Erase(int value) {
 
 	Node* it = m_last;
 	for (int i = Size(); i > 0; --i) {
-		//si es el ultimo valor no lo ejecutes			
+		//si es el ultimo valor no lo ejecutes            
 		if (it->m_next->m_next == nullptr) {
 			//en caso de que sea el primero mira si el valor es el mismo
 			if (it->m_value == value) {
@@ -171,12 +171,11 @@ void ForwardList::Erase(int value) {
 			}
 			return;
 		}
-		
-		if (it->m_next->m_value == value) {
+
+		while (it->m_next->m_value == value) {
 			//metemos el sigiente como valor del sigiente
 			it->m_next = it->m_next->m_next;
 			m_size--;
-			break;
 		}
 		it = it->m_next;
 		//si el ultimo valor es el primero, acavalo porque ya lo hemos comprovado en esta iteracion
@@ -277,42 +276,25 @@ bool operator==(const ForwardList& l1, const ForwardList& l2) {
 	return true;
 }
 
-//ForwardList ForwardList::operator+(const ForwardList& l) {
-//	if (m_first == nullptr)
-//	{
-//		return l;
-//	}
-//	
-//	ForwardList aux;
-//	while (m_last != nullptr)
-//	{
-//		aux.PushFront(m_last->m_value);
-//		m_last = m_last->m_next;
-//	}
-//	if (l.m_first == nullptr)
-//	{
-//		return aux;
-//	}
-//	
-//	ForwardList sum;
-//	
-//	Node* it = l.m_last;
-//	while (it != nullptr)
-//	{
-//		sum.PushFront(it->m_value);
-//		it = it->m_next;
-//	}
-//
-//	while (m_last != nullptr)
-//	{
-//		sum.PushFront(m_last->m_value);
-//		m_last = m_last->m_next;
-//	}
-//
-//	return sum;
-//}
+ForwardList ForwardList::operator+(const ForwardList& l) {
+	ForwardList result;
 
-std::ostream& operator<<(std::ostream& o, const ForwardList& l) { //Printes lists del revés
+	Node* it = m_last;
+	while (it != nullptr) {
+		result.PushFront(it->m_value); 
+		it = it->m_next;
+	}
+
+	Node* it2 = l.m_last;
+	while (it2 != nullptr) {
+		result.PushFront(it2->m_value);
+		it2 = it2->m_next;
+	}
+
+	return result;
+}
+
+std::ostream& operator<<(std::ostream& o, const ForwardList& l) { //Printea lists del revés
 	ForwardList::Node* it = l.m_last;
 	while (it != nullptr) {
 		o << it->m_value;
