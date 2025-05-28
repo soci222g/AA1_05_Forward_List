@@ -277,8 +277,27 @@ bool operator==(const ForwardList& l1, const ForwardList& l2) {
 	return true;
 }
 
-ForwardList operator+(const ForwardList& l) {
-	return l;
+ForwardList ForwardList::operator+(const ForwardList& l) {
+	if (l.m_first == nullptr)
+	{
+		return;
+	}
+	
+	ForwardList sum;
+	while (m_last != nullptr)
+	{
+		sum.PushBack(m_last->m_value);
+		m_first = m_last->m_next;
+	}
+
+	Node* it = l.m_last;
+	while (it != nullptr)
+	{
+		sum.PushBack(it->m_value);
+		it = it->m_next;
+	}
+
+	return sum;
 }
 
 std::ostream& operator<<(std::ostream& o, const ForwardList& l) {
