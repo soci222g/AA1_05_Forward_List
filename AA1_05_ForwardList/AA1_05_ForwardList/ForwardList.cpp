@@ -263,8 +263,8 @@ bool operator==(const ForwardList& l1, const ForwardList& l2) {
 		return false;
 	}
 
-	ForwardList::Node* itL1 = l1.m_first;
-	ForwardList::Node* itL2 = l2.m_first;
+	ForwardList::Node* itL1 = l1.m_last;
+	ForwardList::Node* itL2 = l2.m_last;
 
 	while (itL1 != nullptr && itL2 != nullptr) {
 		if (itL1->m_value != itL2->m_value) {
@@ -277,34 +277,44 @@ bool operator==(const ForwardList& l1, const ForwardList& l2) {
 	return true;
 }
 
-ForwardList ForwardList::operator+(const ForwardList& l) {
-	if (l.m_first == nullptr)
-	{
-		return;
-	}
-	
-	ForwardList sum;
-	while (m_last != nullptr)
-	{
-		sum.PushBack(m_last->m_value);
-		m_first = m_last->m_next;
-	}
+//ForwardList ForwardList::operator+(const ForwardList& l) {
+//	if (m_first == nullptr)
+//	{
+//		return l;
+//	}
+//	
+//	ForwardList aux;
+//	while (m_last != nullptr)
+//	{
+//		aux.PushFront(m_last->m_value);
+//		m_last = m_last->m_next;
+//	}
+//	if (l.m_first == nullptr)
+//	{
+//		return aux;
+//	}
+//	
+//	ForwardList sum;
+//	
+//	Node* it = l.m_last;
+//	while (it != nullptr)
+//	{
+//		sum.PushFront(it->m_value);
+//		it = it->m_next;
+//	}
+//
+//	while (m_last != nullptr)
+//	{
+//		sum.PushFront(m_last->m_value);
+//		m_last = m_last->m_next;
+//	}
+//
+//	return sum;
+//}
 
-	Node* it = l.m_last;
-	while (it != nullptr)
-	{
-		sum.PushBack(it->m_value);
-		it = it->m_next;
-	}
-
-	return sum;
-}
-
-std::ostream& operator<<(std::ostream& o, const ForwardList& l) {
-	o << "[";
-	
+std::ostream& operator<<(std::ostream& o, const ForwardList& l) { //Printes lists del revés
 	ForwardList::Node* it = l.m_last;
-	while (it->m_next != nullptr) {
+	while (it != nullptr) {
 		o << it->m_value;
 		if (it->m_next != nullptr) {
 			o << ", ";
@@ -312,6 +322,5 @@ std::ostream& operator<<(std::ostream& o, const ForwardList& l) {
 		
 		it = it->m_next;
 	}
-	o << "]";
 	return o;
 }

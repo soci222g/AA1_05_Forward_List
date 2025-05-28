@@ -28,12 +28,10 @@ int main() { //IsEmpty() & Size() are used inside some of the other functions. e
 
 	ForwardList myList2;
 	myList2.PushBack(3);
-	myList2.PushFront(5);
 	myList2.PushBack(7);
 	myList2.PushBack(2);
 	myList2.PushBack(2);
-	myList2.PushBack(15);
-	//myList2.PushBack(2);
+	myList2.PushBack(6);
 
 	if (myList == myList2) {
 		std::cout << "Same list" << std::endl;
