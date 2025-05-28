@@ -9,7 +9,18 @@ ForwardList::ForwardList() {
 
 //elimina elementos
 ForwardList::~ForwardList() {
+	if (m_last->m_next == nullptr) {
+		m_size = NULL;
+		m_last = nullptr;
+		m_first = nullptr;
+		return;
+	}
 
+
+	while (Size() > 0) {
+		PopBack();
+	}
+	m_size = NULL;
 }
 
 void ForwardList::PushBack(int value) {
@@ -83,6 +94,11 @@ void ForwardList::PopBack() {
 
 
 	m_size--; //reduce el tamanyo
+
+	if (m_size == 0) {
+		m_last = nullptr;
+		m_first = nullptr;
+	}
 }
 
 void ForwardList::PopFront() {
@@ -104,6 +120,7 @@ void ForwardList::PopFront() {
 			if (nextValuse == m_first->m_value) {
 				delete m_first;
 				m_first = it;
+				m_first->m_next = nullptr;
 				m_size--;
 				return;
 			}
@@ -159,6 +176,7 @@ void ForwardList::Erase(int value) {
 			//metemos el sigiente como valor del sigiente
 			it->m_next = it->m_next->m_next;
 			m_size--;
+			break;
 		}
 		it = it->m_next;
 		//si el ultimo valor es el primero, acavalo porque ya lo hemos comprovado en esta iteracion
@@ -259,18 +277,20 @@ bool operator==(const ForwardList& l1, const ForwardList& l2) {
 	return true;
 }
 
-ForwardList ForwardList::operator+(const ForwardList& l) {
-
+ForwardList operator+(const ForwardList& l) {
+	return l;
 }
 
 std::ostream& operator<<(std::ostream& o, const ForwardList& l) {
 	o << "[";
-	ForwardList::Node* it = l.m_first;
-	while (it != nullptr) {
+	
+	ForwardList::Node* it = l.m_last;
+	while (it->m_next != nullptr) {
 		o << it->m_value;
 		if (it->m_next != nullptr) {
 			o << ", ";
 		}
+		
 		it = it->m_next;
 	}
 	o << "]";

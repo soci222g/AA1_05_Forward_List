@@ -38,4 +38,6 @@ int main() { //IsEmpty() & Size() are used inside some of the other functions. e
 	}
 
 	//FALTA OPERADOR +
+	myList2.PopBack();
+	ForwardList myList3;
 }
