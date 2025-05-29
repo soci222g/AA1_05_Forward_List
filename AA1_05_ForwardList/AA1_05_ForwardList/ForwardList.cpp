@@ -20,7 +20,7 @@ ForwardList::~ForwardList() {
 	while (Size() > 0) {
 		PopBack();
 	}
-	m_size = NULL;
+	m_size = 0;
 }
 
 void ForwardList::PushBack(int value) {

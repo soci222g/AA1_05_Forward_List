@@ -41,11 +41,9 @@ int main() { //IsEmpty() & Size() are used inside some of the other functions. e
 	}
 
 	//FALTA OPERADOR +
-	ForwardList SumList;
+	ForwardList SumList = myList2 + myList;
 	
-	myList2 + myList;
-
-	SumList = myList2 + myList;
+	
 
 	std::cout << SumList << std::endl;
 
